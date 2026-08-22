@@ -33,10 +33,11 @@ int yywrap() {
 }
 ```
 
-Grammar.y:
+ex5.y:
 ```
 %{
 #include <stdio.h>
+
 int yylex(void);
 void yyerror(const char *s);
 %}
@@ -44,10 +45,9 @@ void yyerror(const char *s);
 %token A B
 
 %%
-S   : A A A A A A A A A A B    { printf("Valid string\n"); }
-    | A S B                    { printf("Valid string\n"); }
-    ;
-
+S : A A B
+    { printf("Valid string\n"); }
+  ;
 %%
 
 int main() {
